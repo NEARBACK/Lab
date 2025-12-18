@@ -1,0 +1,93 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Lab1.MainWindow"
+        Width="900" Height="520"
+        Title="Hello World C# (Avalonia)"
+        WindowStartupLocation="CenterScreen">
+
+  <!-- Фон: цвет + картинка Stretch -->
+  <Window.Background>
+    <ImageBrush Source="avares://Lab1/Assets/bg.jpg"
+                Stretch="UniformToFill"
+                Opacity="0.25"/>
+  </Window.Background>
+
+  <Grid Margin="20" RowDefinitions="Auto,Auto,Auto,*" ColumnDefinitions="*,*">
+    <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+               FontSize="24" FontWeight="Bold"
+               Text="Лабораторная №1 — Avalonia UI на Mac" />
+
+    <!-- Кнопки из задания -->
+    <StackPanel Grid.Row="1" Grid.Column="0" Spacing="10" Margin="0,20,20,0">
+      <Button x:Name="BtnHello"
+              Content="1) Hello World"
+              FontSize="16"
+              Click="BtnHello_OnClick"/>
+
+      <Button x:Name="BtnHide"
+              Content="2) Спрятать эту кнопку (Visible=false)"
+              FontSize="16"
+              Click="BtnHide_OnClick"/>
+
+      <Button x:Name="BtnDisable"
+              Content="3) Отключить эту кнопку (Enabled=false)"
+              FontSize="16"
+              Click="BtnDisable_OnClick"/>
+
+      <Button x:Name="BtnChangeText"
+              Content="4) Поменять текст кнопки"
+              FontSize="16"
+              Click="BtnChangeText_OnClick"/>
+    </StackPanel>
+
+    <!-- TextBox + Label: умножить на 5 -->
+    <Border Grid.Row="1" Grid.Column="1" Margin="0,20,0,0"
+            Padding="16" CornerRadius="12"
+            Background="#FFFFFFAA">
+      <StackPanel Spacing="10">
+        <TextBlock FontSize="18" FontWeight="SemiBold"
+                   Text="Умножение числа на 5" />
+
+        <TextBox x:Name="InputNumber"
+                 Watermark="Введи число (например 7)" />
+
+        <Button Content="Посчитать (x * 5)"
+                Click="BtnMultiply_OnClick"/>
+
+        <TextBlock x:Name="ResultLabel"
+                   FontSize="16"
+                   Text="Результат появится тут" />
+
+        <!-- Упражнение 1 -->
+        <Separator Margin="0,10,0,10"/>
+        <TextBlock FontSize="18" FontWeight="SemiBold"
+                   Text="Упражнение 1" />
+        <TextBox x:Name="Exercise1TextBox"
+                 Watermark="Сюда кнопка будет выводить значение" />
+        <Button Content="Вывести значение в TextBox"
+                Click="BtnExercise1_OnClick"/>
+      </StackPanel>
+    </Border>
+
+    <!-- Упражнение 2: мини-калькулятор -->
+    <Border Grid.Row="3" Grid.ColumnSpan="2" Margin="0,20,0,0"
+            Padding="16" CornerRadius="12"
+            Background="#FFFFFFAA">
+      <StackPanel Spacing="10">
+        <TextBlock FontSize="18" FontWeight="SemiBold"
+                   Text="Упражнение 2 — калькулятор через знак операции (if)" />
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBox x:Name="CalcA" Width="160" Watermark="Число A"/>
+            <TextBox x:Name="CalcOp" Width="120" Watermark="Операция: + - * /"/>
+            <TextBox x:Name="CalcB" Width="160" Watermark="Число B"/>
+            <Button Content="Посчитать" Click="BtnCalc_OnClick"/>
+        </StackPanel>
+
+        <TextBlock x:Name="CalcResult"
+                   FontSize="16"
+                   Text="Результат: -" />
+      </StackPanel>
+    </Border>
+  </Grid>
+</Window>
