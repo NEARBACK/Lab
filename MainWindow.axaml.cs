@@ -3,7 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
-
+using Avalonia.VisualTree;
+using System.Linq;
 
 
 namespace Lab1;
@@ -111,5 +112,18 @@ public partial class MainWindow : Window
         }
 
         CalcResult.Text = $"Результат: {res}";
+    }
+    protected override void OnOpened(EventArgs e)
+        {
+        base.OnOpened(e);
+
+        foreach (var btn in this.GetVisualDescendants().OfType<Button>())
+        {
+            MessageBoxManager
+                .GetMessageBoxStandard(
+                    "Какие есть кнопки?",
+                    btn.Name ?? btn.Content?.ToString() ?? "Без имени")
+                .ShowAsync();
+        }
     }
 }
